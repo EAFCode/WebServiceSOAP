@@ -1,0 +1,59 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:tns="http://proit.com/unitel/domain"
+           targetNamespace="http://proit.com/unitel/domain"
+           elementFormDefault="qualified">
+
+    <xs:element name="addClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                 <xs:element name="nome" type="xs:string"></xs:element>
+                <xs:element name="telefone" type="xs:int"></xs:element>
+                <xs:element name="endereco" type="xs:string"></xs:element>
+                <xs:element name="email" type="xs:string"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element> 
+
+    <xs:element name="addClienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" type="tns:cliente"></xs:element>
+            </xs:sequence>
+        </xs:complexType>  
+    </xs:element>
+
+     <xs:element name="removeClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"></xs:element>
+            </xs:sequence>
+        </xs:complexType> 
+    </xs:element>
+
+    <xs:element name="listClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="size" type="xs:int"></xs:element>
+            </xs:sequence>
+        </xs:complexType> 
+    </xs:element>
+
+    <xs:element name="listClienteResponse">
+        <xs:complexType>
+            <xs:sequence  minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="clientes" type="tns:cliente"></xs:element>
+            </xs:sequence>
+        </xs:complexType> 
+    </xs:element>
+
+    <xs:complexType name="cliente">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"></xs:element>
+            <xs:element name="nome" type="xs:string"></xs:element>
+            <xs:element name="telefone" type="xs:int"></xs:element>
+            <xs:element name="endereco" type="xs:string"></xs:element>
+            <xs:element name="email" type="xs:string"></xs:element>
+        </xs:sequence>
+    </xs:complexType>   
+
+</xs:schema>

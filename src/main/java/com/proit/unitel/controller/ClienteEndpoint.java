@@ -2,6 +2,8 @@ package com.proit.unitel.controller;
 
 import com.proit.unitel.domain.AddClienteRequest;
 import com.proit.unitel.domain.AddClienteResponse;
+import com.proit.unitel.domain.EditarClienteRequest;
+import com.proit.unitel.domain.EditarClienteResponse;
 import com.proit.unitel.domain.ListClienteRequest;
 import com.proit.unitel.domain.ListClienteResponse;
 import com.proit.unitel.domain.RemoveClienteRequest;
@@ -20,6 +22,11 @@ public class ClienteEndpoint {
     private ClienteService clienteService;
     private final String NAMESPACE = "http://proit.com/unitel/domain";
     
+    /**
+     * Operation to Save cliente
+     * @param request
+     * @return
+     */
     @PayloadRoot(
         namespace  = NAMESPACE,
         localPart = "addClienteRequest"
@@ -30,6 +37,11 @@ public class ClienteEndpoint {
     }
 
 
+    /**
+     * Operation to list all clientes saved
+     * @param listRequest
+     * @return
+     */
     @PayloadRoot(
         namespace = NAMESPACE,
         localPart = "listClienteRequest"
@@ -39,9 +51,24 @@ public class ClienteEndpoint {
         return clienteService.list(listRequest);
     }
 
+    /**
+     * Operation to remove cliente
+     * @param removeClienteRequest
+     */
     @PayloadRoot(namespace = NAMESPACE, localPart = "removeClienteRequest")
-    public void listCliente(@RequestPayload RemoveClienteRequest removeClienteRequest) {
+    public void removeCliente(@RequestPayload RemoveClienteRequest removeClienteRequest) {
          clienteService.deleteById(removeClienteRequest.getId());
     }
     
+
+    /**
+     * Operation to update Cliente
+     * @param request
+     * @return
+     */
+    @PayloadRoot(namespace = NAMESPACE, localPart = "editarClienteRequest")
+    @ResponsePayload
+    public EditarClienteResponse UpdateCliente(@RequestPayload EditarClienteRequest request) {
+       return clienteService.update(request);
+    }
 }

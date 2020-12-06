@@ -6,7 +6,7 @@
     <xs:element name="addClienteRequest">
         <xs:complexType>
             <xs:sequence>
-                 <xs:element name="nome" type="xs:string"></xs:element>
+                <xs:element name="nome" type="xs:string"></xs:element>
                 <xs:element name="telefone" type="xs:int"></xs:element>
                 <xs:element name="endereco" type="xs:string"></xs:element>
                 <xs:element name="email" type="xs:string"></xs:element>
@@ -15,6 +15,22 @@
     </xs:element> 
 
     <xs:element name="addClienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" type="tns:cliente"></xs:element>
+            </xs:sequence>
+        </xs:complexType>  
+    </xs:element>
+
+     <xs:element name="editarClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" type="tns:cliente"></xs:element>
+            </xs:sequence>
+        </xs:complexType>  
+    </xs:element>
+
+    <xs:element name="editarClienteResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="cliente" type="tns:cliente"></xs:element>

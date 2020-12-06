@@ -20,6 +20,8 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -72,6 +74,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>web-service-soap</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

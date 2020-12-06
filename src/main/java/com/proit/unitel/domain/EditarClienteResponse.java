@@ -10,6 +10,7 @@ package com.proit.unitel.domain;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="cliente" type="{http://proit.com/unitel/domain}cliente"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,27 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "cliente"
 })
-@XmlRootElement(name = "removeClienteRequest")
-public class RemoveClienteRequest {
+@XmlRootElement(name = "editarClienteResponse")
+public class EditarClienteResponse {
 
-    protected long id;
+    @XmlElement(required = true)
+    protected Cliente cliente;
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the cliente property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Cliente }
+     *     
      */
-    public long getId() {
-        return id;
+    public Cliente getCliente() {
+        return cliente;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the cliente property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Cliente }
+     *     
      */
-    public void setId(long value) {
-        this.id = value;
+    public void setCliente(Cliente value) {
+        this.cliente = value;
     }
 
 }

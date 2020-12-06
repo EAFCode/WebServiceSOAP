@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://proit.com/unitel/domain" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://proit.com/unitel/domain" targetNamespace="http://proit.com/unitel/domain">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://proit.com/unitel/domain">
+
+    <xs:element name="addClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nome" type="xs:string"/>
+                <xs:element name="telefone" type="xs:int"/>
+                <xs:element name="endereco" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element> 
+
+    <xs:element name="addClienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" type="tns:cliente"/>
+            </xs:sequence>
+        </xs:complexType>  
+    </xs:element>
+
+     <xs:element name="editarClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" type="tns:cliente"/>
+            </xs:sequence>
+        </xs:complexType>  
+    </xs:element>
+
+    <xs:element name="editarClienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" type="tns:cliente"/>
+            </xs:sequence>
+        </xs:complexType>  
+    </xs:element>
+
+     <xs:element name="removeClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType> 
+    </xs:element>
+
+    <xs:element name="listClienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="size" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType> 
+    </xs:element>
+
+    <xs:element name="listClienteResponse">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                <xs:element name="clientes" type="tns:cliente"/>
+            </xs:sequence>
+        </xs:complexType> 
+    </xs:element>
+
+    <xs:complexType name="cliente">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="nome" type="xs:string"/>
+            <xs:element name="telefone" type="xs:int"/>
+            <xs:element name="endereco" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>   
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addClienteResponse">
+    <wsdl:part element="tns:addClienteResponse" name="addClienteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addClienteRequest">
+    <wsdl:part element="tns:addClienteRequest" name="addClienteRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listClienteRequest">
+    <wsdl:part element="tns:listClienteRequest" name="listClienteRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listClienteResponse">
+    <wsdl:part element="tns:listClienteResponse" name="listClienteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="editarClienteRequest">
+    <wsdl:part element="tns:editarClienteRequest" name="editarClienteRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="editarClienteResponse">
+    <wsdl:part element="tns:editarClienteResponse" name="editarClienteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeClienteRequest">
+    <wsdl:part element="tns:removeClienteRequest" name="removeClienteRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ClientePort">
+    <wsdl:operation name="addCliente">
+      <wsdl:input message="tns:addClienteRequest" name="addClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addClienteResponse" name="addClienteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCliente">
+      <wsdl:input message="tns:listClienteRequest" name="listClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:listClienteResponse" name="listClienteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editarCliente">
+      <wsdl:input message="tns:editarClienteRequest" name="editarClienteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:editarClienteResponse" name="editarClienteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeCliente">
+      <wsdl:input message="tns:removeClienteRequest" name="removeClienteRequest">
+    </wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClientePortSoap11" type="tns:ClientePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addCliente">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addClienteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addClienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCliente">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="listClienteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listClienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editarCliente">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="editarClienteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="editarClienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeCliente">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="removeClienteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientePortService">
+    <wsdl:port binding="tns:ClientePortSoap11" name="ClientePortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

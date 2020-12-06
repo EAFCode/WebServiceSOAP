@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import com.proit.unitel.domain.AddClienteRequest;
 import com.proit.unitel.domain.AddClienteResponse;
 import com.proit.unitel.domain.Cliente;
+import com.proit.unitel.domain.EditarClienteRequest;
+import com.proit.unitel.domain.EditarClienteResponse;
 import com.proit.unitel.domain.ListClienteRequest;
 import com.proit.unitel.domain.ListClienteResponse;
 import com.proit.unitel.repository.ClienteRepository;
@@ -45,5 +47,13 @@ public class ClienteService {
 
     public void deleteById(long id){
         repository.removeById(id);
+    }
+
+    public EditarClienteResponse update(EditarClienteRequest clienteRequest) {
+       Cliente cliente = repository.update(clienteRequest.getCliente());
+
+       EditarClienteResponse response = new EditarClienteResponse();
+       response.setCliente(cliente);
+       return response;
     }
 }
